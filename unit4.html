@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 4 - PHP Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        pre {
+            background-color: #e7e7e7;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Unit 4</h1>
+
+    <h2>Maintaining User State</h2>
+    <ul>
+        <li><strong>Introduction to Cookies</strong>: Cookies are small pieces of data stored on the user's computer by the web browser. They can be used to remember information about the user across sessions, like login credentials or preferences.</li>
+        <li><strong>Setting Time in a Cookie with PHP</strong>: You can set a cookie in PHP using the <code>setcookie()</code> function, specifying the cookie name, value, expiration time, path, and other parameters. Example:
+            <pre>setcookie("username", "JohnDoe", time() + (86400 * 30), "/"); // 30 days expiration</pre>
+        </li>
+        <li><strong>Deleting a Cookie</strong>: To delete a cookie, set its expiration time to a past date:
+            <pre>setcookie("username", "", time() - 3600, "/"); // Deletes the cookie</pre>
+        </li>
+        <li><strong>Creating Session Cookies</strong>: Session cookies are temporary and are deleted when the browser is closed. They can be created in the same way as regular cookies, but without setting an expiration time.</li>
+        <li><strong>Introduction to Sessions</strong>: Sessions are a way to store data across multiple pages. Unlike cookies, session data is stored on the server, making it more secure.</li>
+        <li><strong>Starting a Session</strong>: Begin a session using the <code>session_start()</code> function at the beginning of your PHP script:
+            <pre>session_start();</pre>
+        </li>
+        <li><strong>Registering Session Variables</strong>: After starting a session, you can store data in the <code>$_SESSION</code> super global array:
+            <pre>$_SESSION['username'] = "JohnDoe";</pre>
+        </li>
+        <li><strong>Working with Session Variables</strong>: Access session variables using the <code>$_SESSION</code> array:
+            <pre>echo $_SESSION['username']; // Outputs: JohnDoe</pre>
+        </li>
+        <li><strong>Destroying a Session</strong>: Use <code>session_destroy()</code> to delete all session data, and <code>unset()</code> to remove specific session variables:
+            <pre>session_start();
+session_unset(); // Unset all session variables
+session_destroy(); // Destroy the session</pre>
+        </li>
+        <li><strong>Passing Session IDs</strong>: Session IDs can be passed through URLs or stored in cookies. Use <code>session_id()</code> to retrieve or set the session ID.</li>
+        <li><strong>Encoding and Decoding Session Variables</strong>: You can encode session data with <code>serialize()</code> and decode it with <code>unserialize()</code> for complex data structures.</li>
+        <li><strong>Increase Session Expire Time</strong>: To increase the session duration, configure session settings in <code>php.ini</code> or set it using:
+            <pre>ini_set('session.gc_maxlifetime', 3600); // 1 hour</pre>
+        </li>
+        <li><strong>Working of Session Without Cookies</strong>: You can manage sessions without cookies by passing the session ID in the URL. Ensure that the session ID is included in every link:
+            <pre>echo '&lt;a href="nextpage.php?PHPSESSID=' . session_id() . '"&gt;Next Page&lt;/a&gt;';</pre>
+        </li>
+    </ul>
+
+    <h2>Working with File System</h2>
+    <ul>
+        <li><strong>Understanding PHP File Permissions</strong>: PHP interacts with the file system according to the server's file permissions. Typical permissions include read, write, and execute, which determine what operations can be performed on files and directories.</li>
+        <li><strong>Opening and Closing a File</strong>: Use <code>fopen()</code> to open a file and <code>fclose()</code> to close it:
+            <pre>$file = fopen("example.txt", "r"); // Open file for reading
+fclose($file); // Close the file</pre>
+        </li>
+        <li><strong>File Reading and Writing Functions</strong>:
+            <ul>
+                <li><strong>Reading</strong>: Functions like <code>fgets()</code>, <code>fread()</code>, or <code>file_get_contents()</code> are used to read file data.</li>
+                <li><strong>Writing</strong>: Use <code>fwrite()</code> or <code>file_put_contents()</code> to write data to a file.
+                    <pre>$file = fopen("example.txt", "w");
+fwrite($file, "Hello, World!");
+fclose($file);</pre>
+                </li>
+            </ul>
+        </li>
+        <li><strong>File System and Directory Functions</strong>:
+            <ul>
+                <li><strong>File Information</strong>: Functions like <code>file_exists()</code>, <code>filesize()</code>, <code>filemtime()</code> retrieve information about files.</li>
+                <li><strong>Directory Operations</strong>: Functions such as <code>opendir()</code>, <code>readdir()</code>, <code>closedir()</code>, <code>mkdir()</code>, and <code>rmdir()</code> are used to manage directories.
+                    <pre>if (mkdir("new_directory")) {
+    echo "Directory created successfully.";
+}</pre>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <p>These notes summarize the key concepts for maintaining user state with cookies and sessions, as well as working with the file system in PHP. If you have any questions or need further details on any point, feel free to ask!</p>
+</body>
+</html>

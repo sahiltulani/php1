@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 3 - PHP Forms and Database Integration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Unit 3</h1>
+        <h3>Here’s a brief overview of the topics related to forms and database integration in PHP:</h3>
+
+        <h3>Forms</h3>
+        <ul>
+            <li><strong>Working with HTML Form Controls and PHP</strong>: HTML forms are used to gather user input, and PHP processes that input on the server. Common form controls include text fields, radio buttons, checkboxes, and dropdowns.</li>
+            <li><strong>Super Global Variables</strong>: PHP provides several super global variables that are accessible from anywhere in the script. The most commonly used ones for handling form data are:
+                <ul>
+                    <li><code>$_GET</code>: Contains data sent to the script via URL parameters (query string).</li>
+                    <li><code>$_POST</code>: Contains data sent via form submission using the POST method.</li>
+                    <li><code>$_REQUEST</code>: Combines data from <code>$_GET</code>, <code>$_POST</code>, and <code>$_COOKIE</code>.</li>
+                </ul>
+            </li>
+            <li><strong>Super Global Array</strong>: Arrays that are automatically populated by PHP to handle user input from forms. The data can be accessed by referencing the relevant super global variable.</li>
+            <li><strong>Importing User Input</strong>: User input is imported through form submission. For example, an HTML form can be created with fields like:
+                <pre><code>&lt;form action="process.php" method="post"&gt;
+    &lt;input type="text" name="username" /&gt;
+    &lt;input type="submit" /&gt;
+&lt;/form&gt;</code></pre>
+            </li>
+            <li><strong>Accessing User Input</strong>: User input can be accessed in PHP scripts using the appropriate super global array. For example:
+                <pre><code>$username = $_POST['username'];</code></pre>
+            </li>
+        </ul>
+
+        <h3>Integrating PHP and Database</h3>
+        <ul>
+            <li><strong>Connecting to Database</strong>: Use <code>mysqli</code> or <code>PDO</code> to connect to a database. For example, using <code>mysqli</code>:
+                <pre><code>$conn = new mysqli("localhost", "username", "password", "database");</code></pre>
+            </li>
+            <li><strong>Making SQL Queries</strong>: SQL queries are written as strings to interact with the database (e.g., <code>SELECT</code>, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>).</li>
+            <li><strong>Executing Queries</strong>: After preparing the SQL statement, it can be executed. For example:
+                <pre><code>$result = $conn->query("SELECT * FROM users");</code></pre>
+            </li>
+            <li><strong>Fetching Data Sets</strong>: After executing a query, use functions to retrieve the results. Common methods include:
+                <ul>
+                    <li><code>fetch_assoc()</code>: Fetch a result row as an associative array.</li>
+                    <li><code>fetch_array()</code>: Fetch a result row as both associative and numeric array.</li>
+                    <li><code>fetch_row()</code>: Fetch a result row as a numeric array.</li>
+                </ul>
+            </li>
+            <li><strong>Integrating Forms and Databases</strong>:
+                <ul>
+                    <li><strong>Basic Form Submission to a Database</strong>: A form can submit data directly into a database. For instance:
+                        <pre><code>if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'];
+    $sql = "INSERT INTO users (username) VALUES ('$username')";
+    $conn->query($sql);
+}</code></pre>
+                    </li>
+                    <li><strong>Editing Data with an HTML Form</strong>: To edit existing data, populate the form with current values and then update the database upon submission. Example:
+                        <pre><code>// Fetch current data
+$result = $conn->query("SELECT * FROM users WHERE id = $userId");
+$user = $result->fetch_assoc();
+
+// HTML form for editing
+&lt;form action="edit.php" method="post"&gt;
+    &lt;input type="hidden" name="id" value="&lt;?php echo $user['id']; ?&gt;" /&gt;
+    &lt;input type="text" name="username" value="&lt;?php echo $user['username']; ?&gt;" /&gt;
+    &lt;input type="submit" /&gt;
+&lt;/form&gt;
+
+// Handling the update
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = $_POST['id'];
+    $username = $_POST['username'];
+    $sql = "UPDATE users SET username='$username' WHERE id=$id";
+    $conn->query($sql);
+}</code></pre>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>These notes cover the essential aspects of handling forms and integrating PHP with databases. If you have any specific questions or need further details on any topic, feel free to ask!</p>
+    </div>
+</body>
+</html>

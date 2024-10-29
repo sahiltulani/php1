@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 1 - Web Applications Overview</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to top, #4a90e2, #7fb3f7);
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin: 15px 0;
+        }
+
+        ul {
+            text-align: left;
+            margin: 0 auto;
+            display: inline-block;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+
+        .star {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.8;
+        }
+
+        .star:nth-child(1) {
+            width: 5px;
+            height: 5px;
+            top: 10%;
+            left: 20%;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        .star:nth-child(2) {
+            width: 3px;
+            height: 3px;
+            top: 30%;
+            left: 60%;
+            animation: twinkle 3s infinite alternate;
+        }
+
+        .star:nth-child(3) {
+            width: 7px;
+            height: 7px;
+            top: 50%;
+            left: 40%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+
+        .star:nth-child(4) {
+            width: 4px;
+            height: 4px;
+            top: 70%;
+            left: 80%;
+            animation: twinkle 2.5s infinite alternate;
+        }
+
+        .star:nth-child(5) {
+            width: 6px;
+            height: 6px;
+            top: 20%;
+            left: 80%;
+            animation: twinkle 1.8s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Unit 1</h1>
+    <h2>Overview of Web Applications</h2>
+    <ul>
+        <li>
+            <h3>Introduction to Web Applications</h3>
+            <ul>
+                <li><strong>Client-Side Scripting vs. Server-Side Scripting:</strong>
+                    <ul>
+                        <li><strong>Client-Side Scripting</strong>: Code is executed in the user's browser, affecting the UI and user experience. Common languages include JavaScript and HTML/CSS.</li>
+                        <li><strong>Server-Side Scripting</strong>: Code is executed on the server, generating dynamic content for clients. Common languages include PHP, Python, and Ruby. This is where databases are typically accessed and manipulated.</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3>Understanding Web Servers</h3>
+            <ul>
+                <li><strong>Local Servers</strong>: Used for development and testing on a local machine (e.g., WAMP, XAMPP). They simulate a server environment without needing internet access.</li>
+                <li><strong>Remote Servers</strong>: Actual servers hosting websites accessible over the internet. They handle client requests and serve content from databases or files.</li>
+            </ul>
+        </li>
+        <li>
+            <h3>Installing WAMP and Configuring PHP Environment</h3>
+            <ul>
+                <li><strong>WAMP</strong>: A software stack that allows you to set up a web server environment on Windows. Installation typically involves downloading WAMP and configuring it to work with PHP and MySQL.</li>
+                <li><strong>PHP Environment Configuration</strong>: Setting up the necessary configurations (e.g., php.ini settings) for error reporting, file uploads, and extensions to ensure PHP works as intended.</li>
+            </ul>
+        </li>
+        <li>
+            <h3>Static Website vs. Dynamic Website Development</h3>
+            <ul>
+                <li><strong>Static Websites</strong>: Consist of fixed content that doesn’t change unless manually updated. Simple HTML pages fall under this category.</li>
+                <li><strong>Dynamic Websites</strong>: Generate content dynamically, often using a database. Content changes based on user interaction or other conditions, making them more interactive.</li>
+            </ul>
+        </li>
+        <li>
+            <h3>Embedding PHP Code in Web Pages</h3>
+            <ul>
+                <li>PHP code can be embedded within HTML using &lt;?php ... ?&gt; tags. This allows developers to create dynamic content while still utilizing HTML for structure.</li>
+            </ul>
+        </li>
+        <li>
+            <h3>PHP Basics</h3>
+            <ul>
+                <li><strong>Tokens</strong>: The smallest elements in a PHP program (e.g., keywords, operators).</li>
+                <li><strong>Variables</strong>: Containers for storing data. PHP variables start with $.</li>
+                <li><strong>Variable Scope</strong>: Refers to the visibility of variables (local, global, static).</li>
+                <li><strong>Constants</strong>: Define unchangeable values, using define() or const.</li>
+                <li><strong>Data Types</strong>: PHP supports multiple types (integers, floats, strings, arrays, objects).</li>
+                <li><strong>Number Handling</strong>: PHP provides functions for mathematical operations and number manipulation.</li>
+                <li><strong>Operands and Operators</strong>: Used for performing operations on variables and values (arithmetic, comparison, logical).</li>
+                <li><strong>Expressions</strong>: Combinations of variables, constants, and operators that evaluate to a value.</li>
+                <li><strong>Operator Precedence</strong>: The order in which operations are performed in expressions.</li>
+                <li><strong>Comments</strong>: Used for documentation within code (// for single-line, /* ... */ for multi-line).</li>
+                <li><strong>Echo and Print Statements</strong>: Used to output data to the screen. echo can take multiple parameters, while print always returns 1.</li>
+            </ul>
+        </li>
+        <li>
+            <h3>Control Structures</h3>
+            <ul>
+                <li><strong>Branching Statements:</strong>
+                    <ul>
+                        <li><strong>if-else</strong>: Executes a block of code based on a condition.</li>
+                        <li><strong>Ternary Operator</strong>: A shorthand for if-else that evaluates to one of two values.</li>
+                        <li><strong>Switch</strong>: A control structure that executes code based on the value of a variable.</li>
+                    </ul>
+                </li>
+                <li><strong>Looping Statements:</strong>
+                    <ul>
+                        <li><strong>While</strong>: Repeats a block of code as long as a condition is true.</li>
+                        <li><strong>Do-While</strong>: Similar to while, but the block of code executes at least once.</li>
+                        <li><strong>For</strong>: A loop that executes a set number of times based on an initial condition.</li>
+                    </ul>
+                </li>
+                <li><strong>File Inclusion Statements</strong>: Used to include the content of one PHP file into another (e.g., include, require).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <!-- Star elements -->
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+</body>
+</html>

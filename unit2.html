@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #d37272;
+            margin-bottom: 20px;
+        }
+        h3 {
+            color: #d37272;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        code {
+            background-color: #eaeaea;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        pre {
+            background-color: #eaeaea;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Unit 2</h1>
+    
+    <h3>Functions</h3>
+    <ul>
+        <li><strong>Function Definition</strong>: A function is a reusable block of code that performs a specific task. It is defined using the <code>function</code> keyword followed by the function name and parentheses.</li>
+        
+        <li><strong>Creating and Invoking User-Defined Functions</strong>: User-defined functions are created by the programmer. They are invoked (called) by using the function name followed by parentheses. Example:
+            <pre><code>function myFunction() {
+    // code to be executed
+}
+myFunction(); // calling the function</code></pre>
+        </li>
+
+        <li><strong>Formal Parameters vs. Actual Parameters</strong>:
+            <ul>
+                <li><strong>Formal Parameters</strong>: Variables listed in the function definition that accept values.</li>
+                <li><strong>Actual Parameters</strong>: The values passed to the function when it is called.</li>
+            </ul>
+        </li>
+
+        <li><strong>Function and Variable Scope</strong>: Scope determines the visibility of variables:
+            <ul>
+                <li><strong>Local Scope</strong>: Variables defined within a function are accessible only inside that function.</li>
+                <li><strong>Global Scope</strong>: Variables defined outside any function are accessible anywhere.</li>
+                <li><strong>Static Variables</strong>: Retain their value between function calls.</li>
+            </ul>
+        </li>
+
+        <li><strong>Recursion</strong>: A function that calls itself to solve a problem, typically with a base case to terminate the recursion. Example:
+            <pre><code>function factorial($n) {
+    return ($n === 0) ? 1 : $n * factorial($n - 1);
+}</code></pre>
+        </li>
+
+        <li><strong>Library Functions</strong>: Built-in functions provided by PHP that can be used to perform common tasks, such as string manipulation, mathematical calculations, and array handling.</li>
+    </ul>
+
+    <h3>String Handling</h3>
+    <ul>
+        <li><strong>Interpolation with Curly Braces</strong>: PHP allows variable interpolation within double-quoted strings using curly braces for complex variables. Example:
+            <pre><code>$name = "John";
+echo "Hello, {$name}!"; // Outputs: Hello, John!</code></pre>
+        </li>
+
+        <li><strong>Characters and String Indexes</strong>: Strings can be indexed similarly to arrays. For example, <code>$str[0]</code> accesses the first character.</li>
+
+        <li><strong>String Operators</strong>: The concatenation operator (<code>.</code>) is used to join strings. Example:
+            <pre><code>$greeting = "Hello, " . "world!";</code></pre>
+        </li>
+
+        <li><strong>Heredoc</strong>: A syntax for defining multi-line strings without escaping quotes. Example:
+            <pre><code>$str = <<<EOD
+This is a heredoc string.
+EOD;</code></pre>
+        </li>
+
+        <li><strong>String Functions</strong>: Built-in functions for string manipulation (e.g., <code>strlen()</code>, <code>str_replace()</code>, <code>strpos()</code>, etc.).</li>
+
+        <li><strong>Formatting Strings</strong>: Functions like <code>sprintf()</code> and <code>printf()</code> are used to format strings according to specified format strings.</li>
+
+        <li><strong>Comparing and Searching Strings and Substrings</strong>: Functions like <code>strcmp()</code>, <code>strpos()</code>, and <code>strstr()</code> are used for comparing and searching within strings.</li>
+    </ul>
+
+    <h3>Arrays</h3>
+    <ul>
+        <li><strong>PHP Arrays</strong>: A data structure that holds multiple values. PHP supports indexed (numerically) and associative (key-value) arrays.</li>
+
+        <li><strong>Creating Arrays</strong>: Arrays can be created using the <code>array()</code> function or the shorthand <code>[]</code> syntax. Example:
+            <pre><code>$arr = array(1, 2, 3);
+$assoc = ["key1" => "value1", "key2" => "value2"];</code></pre>
+        </li>
+
+        <li><strong>Accessing Array Elements</strong>: Accessed using square brackets with the index or key. Example:
+            <pre><code>echo $arr[0]; // Outputs: 1
+echo $assoc['key1']; // Outputs: value1</code></pre>
+        </li>
+
+        <li><strong>Multidimensional Arrays</strong>: Arrays containing other arrays. Example:
+            <pre><code>$multiArr = [[1, 2], [3, 4]];</code></pre>
+        </li>
+
+        <li><strong>Inspecting Arrays</strong>: Functions like <code>print_r()</code> and <code>var_dump()</code> help inspect the contents of an array.</li>
+
+        <li><strong>Deleting from Arrays</strong>: Use functions like <code>unset()</code> to remove elements. Example:
+            <pre><code>unset($arr[1]); // Removes the second element</code></pre>
+        </li>
+
+        <li><strong>Iterating with each() and foreach()</strong>: 
+            <ul>
+                <li><strong>each()</strong>: Returns the current key and value pair and advances the array pointer. Note: Deprecated as of PHP 7.2.</li>
+                <li><strong>foreach()</strong>: Used to loop through each element of an array. Example:
+                    <pre><code>foreach ($arr as $value) {
+    echo $value;
+}</code></pre>
+                </li>
+            </ul>
+        </li>
+
+        <li><strong>Iterative Functions</strong>: 
+            <ul>
+                <li><strong>current()</strong>: Returns the current element.</li>
+                <li><strong>next()</strong>: Advances the internal pointer to the next element.</li>
+                <li><strong>prev()</strong>: Moves the pointer to the previous element.</li>
+                <li><strong>reset()</strong>: Moves the pointer to the first element.</li>
+                <li><strong>end()</strong>: Moves the pointer to the last element.</li>
+            </ul>
+        </li>
+    </ul>
+    
+</body>
+</html>
